@@ -10,10 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 public class MainActivity extends Activity {
+
+    private TextView tvDisplay;
+    private Button btnToggle;
+    private String[] greetings = {"Hallo", "Hello", "Salut"};
+    private int current;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v("MainActivity", "onCreate");
+        setContentView(R.layout.main);
+        tvDisplay = findViewById(R.id.tv_display);
+        btnToggle = findViewById(R.id.btn_toggle);
+        btnToggle.setOnClickListener(onToggleListener);
     }
 
     @Override
