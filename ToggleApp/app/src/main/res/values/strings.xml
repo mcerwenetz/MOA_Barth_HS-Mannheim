@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ToggleApp</string>
+    <string name="msg_btn_toggle">toggle</string>
+    <string name="msg_btn_finish">finish</string>
+
+</resources>
