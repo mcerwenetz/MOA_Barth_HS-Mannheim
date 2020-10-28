@@ -4,5 +4,10 @@
     <string name="msg_btn_finish">finish</string>
     <string name="appname">ToggleApp</string>
     <string name="contentDescriptionImageButton">Icon</string>
+    <string-array name="greetings">
+        <item>Hallo</item>
+        <item>Salut</item>
+        <item>Hola</item>
+    </string-array>
 
 </resources>
