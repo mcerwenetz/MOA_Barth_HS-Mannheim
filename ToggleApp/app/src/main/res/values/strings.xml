@@ -3,6 +3,8 @@
     <string name="msg_btn_toggle">toggle</string>
     <string name="msg_btn_finish">finish</string>
     <string name="contentDescriptionImageButton">Icon</string>
+    <string name="msg_short_toast">Short Toast</string>
+    <string name="msg_long_toast">Long Toast</string>
     <string-array name="greetings">
         <item>Hallo</item>
         <item>Salut</item>
