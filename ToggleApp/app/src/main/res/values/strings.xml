@@ -12,6 +12,7 @@
     <string name="msgBtnFontSize">Fontsize</string>
     <string name="msgBtnFG">FG</string>
     <string name="msgBtnBG">BG</string>
+    <string name="msgBtnUpdate">Update</string>
     <string-array name="textviewMsgs">
         <item>Eins</item>
         <item>Zwei</item>
