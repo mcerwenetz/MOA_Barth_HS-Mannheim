@@ -6,23 +6,31 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Toggle App"
+        android:text="@string/appname"
         android:gravity="center"
         />
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:id="@+id/btn_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/msg_btn_finish"/>
+            android:text="@string/msg_btn_finish"
+            style="@style/ToggleStyle.Important"/>
         <Button
             android:id="@+id/btn_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/msg_btn_toggle"/>
+            android:text="@string/msg_btn_toggle"
+            style="@style/ToggleStyle"/>
+        <ImageButton
+            android:contentDescription="@string/contentDescriptionImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            />
 
     </LinearLayout>
     <LinearLayout
