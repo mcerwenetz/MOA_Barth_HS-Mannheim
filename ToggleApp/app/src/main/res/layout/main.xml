@@ -30,6 +30,7 @@
             style="@style/ToggleStyle"/>
     </LinearLayout>
     <ImageButton
+        android:id="@+id/btn_image"
         android:contentDescription="@string/contentDescriptionImageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
