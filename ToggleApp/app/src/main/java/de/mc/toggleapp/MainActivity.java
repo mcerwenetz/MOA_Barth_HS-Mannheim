@@ -14,11 +14,13 @@ public class MainActivity extends Activity {
     private TextView tvDisplay;
     private Button btnToggle;
     private Button btnfinish;
-    private String[] greetings = {"Hallo", "Hello", "Salut"};
+    private String[] greetings ;
     private int current;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        greetings=getResources().getStringArray(R.array.greetings);
+        current=0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         tvDisplay = findViewById(R.id.tv_display);
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
         btnfinish = findViewById(R.id.btn_finish);
         btnfinish.setOnClickListener(onFinishListener);
         btnToggle.setOnClickListener(onToggleListener);
+        tvDisplay.setText(greetings[current]);
     }
 
     @Override
