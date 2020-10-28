@@ -5,6 +5,18 @@
     <string name="contentDescriptionImageButton">Icon</string>
     <string name="msg_short_toast">Short Toast</string>
     <string name="msg_long_toast">Long Toast</string>
+    <string name="textviewMsg">Dies ist eine Textview</string>
+    <string name="textviewMsgLong">Dies ist eine sehr langer Text. Es sollte einen Umbruch geben. Hoffentlich reicht das aus.</string>
+    <string name="textviewFormatedMsg">normal,<b>fett</b>,<i>krusiv</i>,<u>unterstrichen</u>></string>
+    <string name="msgBtnTextView">Text</string>
+    <string name="msgBtnFontSize">Fontsize</string>
+    <string name="msgBtnFG">FG</string>
+    <string name="msgBtnBG">BG</string>
+    <string-array name="textviewMsgs">
+        <item>Eins</item>
+        <item>Zwei</item>
+        <item>Und so weiter</item>
+    </string-array>
     <string-array name="greetings">
         <item>Hallo</item>
         <item>Salut</item>
