@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import static android.content.ContentValues.TAG;
+
 public class MainActivity extends Activity {
 
     private TextView tvDisplay;
@@ -38,20 +40,18 @@ public class MainActivity extends Activity {
         Log.v("MainActivity", "onDestroy");
     }
 
-    private View.OnClickListener onToggleListener = new View.OnClickListener(){
-
+    private final View.OnClickListener onButtonListener = new View.OnClickListener(){
         @Override
-        public void onClick(View v) {
-            current = (current+1)%greetings.length;
-            tvDisplay.setText(greetings[current]);
+        public void onClick(final View v) {
+            int buttonID = v.getId();
+            if (buttonID == R.id.btn_toggle){
+                current=(current+1)%greetings.length;
+                tvDisplay.setText(greetings[current]);
+            }else if (buttonID == R.id.btn_finish) {
+                finish();
+            }else if (buttonID == R.id.btn_image){
+                Log.v(TAG, "Image Button clicked");
+            }
         }
     };
-    private View.OnClickListener onFinishListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
-            finish();
-        }
-    };
-
 }
