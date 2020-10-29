@@ -15,6 +15,7 @@
     <string name="msgBtnUpdate">Update</string>
     <string name="checkBoxActvityName">CheckBox</string>
     <string name="msgBtnSet">SET</string>
+    <string name="spinnerRaeumePromt">Welcher Raum?</string>
     <string-array name="textviewMsgs">
         <item>Eins</item>
         <item>Zwei</item>
@@ -24,6 +25,14 @@
         <item>Hallo</item>
         <item>Salut</item>
         <item>Hola</item>
+    </string-array>
+    <string-array name="raeume">
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>A4</item>
+        <item>A5</item>
+        <item>A6</item>
     </string-array>
 
 </resources>
