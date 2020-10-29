@@ -13,6 +13,8 @@
     <string name="msgBtnFG">FG</string>
     <string name="msgBtnBG">BG</string>
     <string name="msgBtnUpdate">Update</string>
+    <string name="checkBoxActvityName">CheckBox</string>
+    <string name="msgBtnSet">SET</string>
     <string-array name="textviewMsgs">
         <item>Eins</item>
         <item>Zwei</item>
