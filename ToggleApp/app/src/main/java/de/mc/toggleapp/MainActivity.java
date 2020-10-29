@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import static android.content.ContentValues.TAG;
@@ -17,6 +18,19 @@ public class MainActivity extends Activity {
     private TextView tvDisplay;
     private String[] greetings ;
     private int current;
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("current", current);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        current=savedInstanceState.getInt("current");
+        tvDisplay.setText(greetings[current]);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
