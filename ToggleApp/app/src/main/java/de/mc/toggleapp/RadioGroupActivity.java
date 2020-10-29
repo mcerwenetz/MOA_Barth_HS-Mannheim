@@ -30,11 +30,11 @@ public class RadioGroupActivity extends Activity {
         @Override
         public void onClick(View v) {
             int checked = rgColor.getCheckedRadioButtonId();
-            if (checked == R.id.rbRed){
+            if (checked == R.id.rbRed) {
                 rgColor.check(R.id.rbGreen);
-            }else if (checked == R.id.rbGreen){
+            } else if (checked == R.id.rbGreen) {
                 rgColor.check(R.id.rbBlue);
-            }else if (checked == R.id.rbBlue){
+            } else if (checked == R.id.rbBlue) {
                 rgColor.check(R.id.rbRed);
             }
         }
@@ -48,7 +48,7 @@ public class RadioGroupActivity extends Activity {
         Button btnNext = findViewById(R.id.btnNext);
         btnNext.setOnClickListener(oclNext);
         rgColor = findViewById(R.id.rgColor);
-        tvColor=findViewById(R.id.tvColor);
+        tvColor = findViewById(R.id.tvColor);
         rgColor.setOnCheckedChangeListener(occl);
 
     }
