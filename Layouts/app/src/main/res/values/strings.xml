@@ -3,5 +3,6 @@
     <string-array name="layouts">
         <item>FrameLayout</item>
         <item>LinearLayout</item>
+        <item>TableLayout</item>
     </string-array>
 </resources>
