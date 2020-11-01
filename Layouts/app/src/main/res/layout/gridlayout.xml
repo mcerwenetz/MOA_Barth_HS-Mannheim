@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:alignmentMode="alignBounds"
+    android:useDefaultMargins="true"
+    android:columnCount="4"
+    >
+    <TextView
+        android:text="center span 4"
+        android:layout_columnSpan="4"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:text="center span 2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:text="span2"
+        android:layout_columnSpan="2"/>
+    <TextView
+        android:text="vier"/>
+    <TextView
+        android:text="fünf"/>
+    <TextView
+        android:text="sechs"/>
+    <TextView
+        android:text="sieben right"
+        android:layout_gravity="right"/>
+    <TextView
+        android:text="sieben left"
+        android:layout_gravity="left"
+        android:layout_column="3"/>
+</GridLayout>

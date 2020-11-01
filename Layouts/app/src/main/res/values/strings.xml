@@ -4,5 +4,6 @@
         <item>FrameLayout</item>
         <item>LinearLayout</item>
         <item>TableLayout</item>
+        <item>GridLayout</item>
     </string-array>
 </resources>
