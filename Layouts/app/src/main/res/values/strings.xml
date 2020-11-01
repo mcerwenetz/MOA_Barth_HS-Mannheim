@@ -6,5 +6,6 @@
         <item>TableLayout</item>
         <item>GridLayout</item>
         <item>RelativeLayout</item>
+        <item>ConstraintLayout</item>
     </string-array>
 </resources>
