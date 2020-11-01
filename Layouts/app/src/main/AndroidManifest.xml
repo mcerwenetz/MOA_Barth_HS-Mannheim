@@ -20,6 +20,7 @@
         <activity android:name=".LinearLayout"/>
         <activity android:name=".TableLayout"/>
         <activity android:name=".GridLayout"/>
+        <activity android:name=".RelativeLayout"/>
 
     </application>
 
