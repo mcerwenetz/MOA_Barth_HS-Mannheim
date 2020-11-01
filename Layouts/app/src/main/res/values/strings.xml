@@ -2,5 +2,6 @@
     <string name="app_name">Layouts</string>
     <string-array name="layouts">
         <item>FrameLayout</item>
+        <item>LinearLayout</item>
     </string-array>
 </resources>
