@@ -22,20 +22,24 @@
             android:layout_gravity="left"
             >
             <RadioGroup
+                android:id="@+id/rgSource"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
                 <RadioButton
+                    android:id="@+id/rbSourceEuro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="EUR"
                     />
                 <RadioButton
+                    android:id="@+id/rbSourceUSD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="USD"
                     />
                 <RadioButton
+                    android:id="@+id/rbSourceGRD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="GRD"
@@ -55,20 +59,24 @@
             android:orientation="vertical"
             >
             <RadioGroup
+                android:id="@+id/rgDest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
                 <RadioButton
+                    android:id="@+id/rbDestEuro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="EUR"
                     />
                 <RadioButton
+                    android:id="@+id/rbDestUSD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="USD"
                     />
                 <RadioButton
+                    android:id="@+id/rbDestGRD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="GRD"
