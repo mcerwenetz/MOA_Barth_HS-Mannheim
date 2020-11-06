@@ -25,6 +25,8 @@ public class MainActivity extends Activity{
     private String quellwaehrung;
     private String zielwaehrung;
     private BigDecimal amount;
+    private BigDecimal result = new BigDecimal("0");
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MainActivity extends Activity{
         rgSource = findViewById(R.id.rgSource);
         rgDest = findViewById(R.id.rgDest);
         etAmount = findViewById(R.id.etAmountSource);
+        tvResult = findViewById(R.id.tvResult);
 
         rgSource.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -84,6 +87,29 @@ public class MainActivity extends Activity{
             String msg = "calculation has been called.\n Parameters are: quellwährung: " +quellwaehrung
                     + " zielwaehrung: " + zielwaehrung + " amount: "+amount;
             Log.v(TAG, msg );
+            //Umrechnen in Euro
+            BigDecimal amountInEuro=null;
+            if(quellwaehrung.equals("EUR")){
+                amountInEuro=amount;
+            }
+            else if (quellwaehrung.equals("USD")){
+                amountInEuro = amount.multiply(new BigDecimal("0.84"));
+            }
+            else if (quellwaehrung.equals("GRD")){
+                amountInEuro = amount.multiply(new BigDecimal("0.002934"));
+            }
+            //Umrechnen in Zielwährung
+            if (zielwaehrung.equals("EUR")){
+                result = amountInEuro;
+            }
+            else if (zielwaehrung.equals("USD")){
+                result = amountInEuro.multiply(new BigDecimal("1.17"));
+            }
+            else if (zielwaehrung.equals("GRD")){
+                result = amountInEuro.multiply(new BigDecimal("340.75"));
+            }
+            result = result.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            tvResult.setText(result.toString());
         }
     }
 
