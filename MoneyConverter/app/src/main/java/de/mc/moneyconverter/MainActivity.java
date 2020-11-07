@@ -74,6 +74,7 @@ public class MainActivity extends Activity{
                     amount = new BigDecimal(s.toString());
                     Log.v(TAG, "Amount is " + amount);
                 } catch (NumberFormatException e){
+                    tvResult.setText("0");
                     amount = null;
                 }
                 calculation();
