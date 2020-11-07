@@ -25,7 +25,7 @@ public class MainActivity extends Activity{
     private String quellwaehrung;
     private String zielwaehrung;
     private BigDecimal amount;
-    private BigDecimal result = new BigDecimal("0");
+    private BigDecimal result;
 
 
     @Override
