@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 
 public class MainActivity extends Activity{
 
-    private final String TAG = "MoneyConverer";
+    private final String TAG = "MoneyConverter";
 
     private RadioGroup rgSource;
     private RadioGroup rgDest;
