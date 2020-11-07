@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashMap;
 
 public class MainActivity extends Activity{
 
@@ -37,6 +39,7 @@ public class MainActivity extends Activity{
         etAmount = findViewById(R.id.etAmountSource);
         tvResult = findViewById(R.id.tvResult);
         tvResult.setText("0");
+        setAllRadios();
 
         rgSource.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -84,12 +87,27 @@ public class MainActivity extends Activity{
 
     }
 
+    private void setAllRadios() {
+        String[] wechselkursnamen = this.getResources().getStringArray(R.array.wechselkursNamen);
+        RadioGroup rgSource = findViewById(R.id.rgSource);
+        RadioGroup rgDest = findViewById(R.id.rgDest);
+        //Todo: RadioButtons automatisch generieren
+        for(int i=0; i < wechselkursnamen.length; i++){
+            ((RadioButton) rgSource.getChildAt(i)).setText(wechselkursnamen[i]);
+            ((RadioButton) rgDest.getChildAt(i)).setText(wechselkursnamen[i]);
+        }
+
+    }
+
     private void calculation() {
         if (quellwaehrung != null && zielwaehrung != null && amount != null){
-//            String msg = "calculation has been called.\n Parameters are: quellwährung: " +quellwaehrung
-//                    + " zielwaehrung: " + zielwaehrung + " amount: "+amount;
-//            Log.v(TAG, msg );
-            Calculation calculation = new Calculation(quellwaehrung,zielwaehrung,amount);
+            String[] wechselkursnamen = this.getResources().getStringArray(R.array.wechselkursNamen);
+            String[] wechselkurse = this.getResources().getStringArray(R.array.wechselkurse);
+            LinkedHashMap<String, String> wechselkursmap = new LinkedHashMap<String, String>();
+            for (int i = 0; i < wechselkurse.length; i++){
+                wechselkursmap.put(wechselkursnamen[i], wechselkurse[i]);
+            }
+            Calculation calculation = new Calculation(quellwaehrung,zielwaehrung,amount, wechselkursmap);
             tvResult.setText(calculation.getResult().toString());
         }
     }
