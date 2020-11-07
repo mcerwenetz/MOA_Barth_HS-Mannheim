@@ -36,6 +36,7 @@ public class MainActivity extends Activity{
         rgDest = findViewById(R.id.rgDest);
         etAmount = findViewById(R.id.etAmountSource);
         tvResult = findViewById(R.id.tvResult);
+        tvResult.setText("0");
 
         rgSource.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
