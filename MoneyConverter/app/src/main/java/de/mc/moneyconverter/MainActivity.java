@@ -74,6 +74,7 @@ public class MainActivity extends Activity{
 
             @Override
             public void afterTextChanged(Editable s) {
+                //Todo: If für Big Decimal
                 try{
                     amount = new BigDecimal(s.toString());
                     Log.v(TAG, "Amount is " + amount);
@@ -91,7 +92,7 @@ public class MainActivity extends Activity{
         String[] wechselkursnamen = this.getResources().getStringArray(R.array.wechselkursNamen);
         RadioGroup rgSource = findViewById(R.id.rgSource);
         RadioGroup rgDest = findViewById(R.id.rgDest);
-        //Todo: RadioButtons automatisch generieren
+        //Todo: Dropdown automatisch generieren
         for(int i=0; i < wechselkursnamen.length; i++){
             ((RadioButton) rgSource.getChildAt(i)).setText(wechselkursnamen[i]);
             ((RadioButton) rgDest.getChildAt(i)).setText(wechselkursnamen[i]);
@@ -107,6 +108,7 @@ public class MainActivity extends Activity{
             for (int i = 0; i < wechselkurse.length; i++){
                 wechselkursmap.put(wechselkursnamen[i], wechselkurse[i]);
             }
+            //Todo: Nicht bei jeder calc neu generieren -> onCreate()
             Calculation calculation = new Calculation(quellwaehrung,zielwaehrung,amount, wechselkursmap);
             tvResult.setText(calculation.getResult().toString());
         }
