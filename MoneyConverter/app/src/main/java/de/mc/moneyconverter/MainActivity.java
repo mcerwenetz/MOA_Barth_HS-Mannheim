@@ -20,8 +20,7 @@ public class MainActivity extends Activity{
 
     private final String TAG = "MoneyConverter";
 
-    private RadioGroup rgSource;
-    private RadioGroup rgDest;
+
     private EditText etAmount;
     private TextView tvResult;
     private String quellwaehrung;
@@ -34,32 +33,9 @@ public class MainActivity extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moneyconverter);
-        rgSource = findViewById(R.id.rgSource);
-        rgDest = findViewById(R.id.rgDest);
         etAmount = findViewById(R.id.etAmountSource);
         tvResult = findViewById(R.id.tvResult);
         tvResult.setText("0");
-        setAllRadios();
-
-        rgSource.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton checked = findViewById(checkedId);
-                quellwaehrung = (String) checked.getText();
-                Log.v(TAG, "Source checked it's" + quellwaehrung);
-                calculation();
-            }
-        });
-
-        rgDest.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton checked = findViewById(checkedId);
-                zielwaehrung = (String) checked.getText();
-                Log.v(TAG, "Dest checked it's" + zielwaehrung);
-                calculation();
-            }
-        });
 
         etAmount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -85,18 +61,6 @@ public class MainActivity extends Activity{
                 calculation();
             }
         });
-
-    }
-
-    private void setAllRadios() {
-        String[] wechselkursnamen = this.getResources().getStringArray(R.array.wechselkursNamen);
-        RadioGroup rgSource = findViewById(R.id.rgSource);
-        RadioGroup rgDest = findViewById(R.id.rgDest);
-        //Todo: Dropdown automatisch generieren
-        for(int i=0; i < wechselkursnamen.length; i++){
-            ((RadioButton) rgSource.getChildAt(i)).setText(wechselkursnamen[i]);
-            ((RadioButton) rgDest.getChildAt(i)).setText(wechselkursnamen[i]);
-        }
 
     }
 
