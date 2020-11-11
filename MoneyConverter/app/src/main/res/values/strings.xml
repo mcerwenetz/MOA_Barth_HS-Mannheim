@@ -4,12 +4,10 @@
         <item>EUR</item>
         <item>USD</item>
         <item>GRD</item>
-        <item>BZD</item>
     </string-array>
     <string-array name="wechselkurse">
         <item>1.00</item>
         <item>0.84</item>
         <item>0.002934</item>
-        <item>0.40</item>
     </string-array>
 </resources>
