@@ -55,6 +55,8 @@ public class MainActivity extends Activity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 quellwaehrung = (String) parent.getSelectedItem();
+                Log.v(TAG, "Quellwährung is "+quellwaehrung);
+                calculation();
             }
 
             @Override
@@ -68,6 +70,10 @@ public class MainActivity extends Activity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 zielwaehrung = (String) parent.getSelectedItem();
+                Log.v(TAG, "Zielwährung is "+zielwaehrung);
+                calculation();
+
+
             }
 
             @Override
