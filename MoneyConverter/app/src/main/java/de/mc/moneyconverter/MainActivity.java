@@ -30,6 +30,7 @@ public class MainActivity extends Activity{
     private String zielwaehrung;
     private BigDecimal amount;
     private BigDecimal result;
+    private Calculation calc;
 
     public MainActivity() {
     }
@@ -43,6 +44,8 @@ public class MainActivity extends Activity{
         tvResult = findViewById(R.id.tvResult);
         quellwaehrungsspinner = findViewById(R.id.spinnerquellwaehrung);
         zielwaehrungsspinner = findViewById(R.id.spinnerqzielwaehrung);
+
+        calc = new Calculation();
 
         tvResult.setText("0");
         ArrayAdapter<CharSequence> waehrungsnamenadapter = ArrayAdapter.createFromResource(this, R.array.wechselkursNamen, android.R.layout.simple_spinner_item);
@@ -59,6 +62,8 @@ public class MainActivity extends Activity{
 
             }
         };
+
+
         AdapterView.OnItemSelectedListener zielOisl = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -114,9 +119,7 @@ public class MainActivity extends Activity{
             for (int i = 0; i < wechselkurse.length; i++){
                 wechselkursmap.put(wechselkursnamen[i], wechselkurse[i]);
             }
-            //Todo: Nicht bei jeder calc neu generieren -> onCreate()
-            Calculation calculation = new Calculation(quellwaehrung,zielwaehrung,amount, wechselkursmap);
-            tvResult.setText(calculation.getResult().toString());
+            tvResult.setText(calc.getResult(quellwaehrung,zielwaehrung,amount, wechselkursmap).toString());
         }
     }
 
