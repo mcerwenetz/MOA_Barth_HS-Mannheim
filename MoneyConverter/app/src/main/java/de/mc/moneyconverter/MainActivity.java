@@ -85,7 +85,7 @@ public class MainActivity extends Activity{
 
 
         quellwaehrungsspinner.setAdapter(waehrungsnamenadapter);
-        quellwaehrungsspinner.setAdapter(waehrungsnamenadapter);
+        zielwaehrungsspinner.setAdapter(waehrungsnamenadapter);
 
         quellwaehrungsspinner.setOnItemSelectedListener(quellOisl);
         zielwaehrungsspinner.setOnItemSelectedListener(zielOisl);
@@ -103,15 +103,15 @@ public class MainActivity extends Activity{
 
             @Override
             public void afterTextChanged(Editable s) {
-                //Todo: If für Big Decimal
-                try{
+                Log.v(TAG, "s is " + s.toString());
+                if(s.toString().matches("")) {
+                    tvResult.setText("0");
+                }else{
+
                     amount = new BigDecimal(s.toString());
                     Log.v(TAG, "Amount is " + amount);
-                } catch (NumberFormatException e){
-                    tvResult.setText("0");
-                    amount = null;
+                    calculation();
                 }
-                calculation();
             }
         });
 
