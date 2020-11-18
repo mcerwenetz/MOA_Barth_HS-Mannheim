@@ -38,10 +38,13 @@ public class MainActivity extends Activity{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        //Todo: Saved instance nutzen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moneyconverter);
         etAmount = findViewById(R.id.etAmountSource);
+        //Todo: Zielwährungsfeld soll et werden. Die
         tvResult = findViewById(R.id.tvResult);
+
         quellwaehrungsspinner = findViewById(R.id.spinnerquellwaehrung);
         zielwaehrungsspinner = findViewById(R.id.spinnerqzielwaehrung);
 
