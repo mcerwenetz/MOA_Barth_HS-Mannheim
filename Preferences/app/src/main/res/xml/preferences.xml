@@ -1,0 +1,7 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/key_vorname"
+        android:title="Vorname"
+        android:defaultValue="Marius"
+        />
+</PreferenceScreen>
