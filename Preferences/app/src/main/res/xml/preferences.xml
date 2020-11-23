@@ -1,5 +1,5 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Persönlich">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.PreferenceCategory android:title="Persönlich">
         <EditTextPreference
         android:key="@string/key_vorname"
         android:title="Vorname"
@@ -16,5 +16,5 @@
             android:entries="@array/key_geschlechter"
             android:entryValues="@array/gesch_entries_values"
             />
-    </PreferenceCategory>
-</PreferenceScreen>
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>
