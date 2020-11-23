@@ -2,7 +2,6 @@ package de.mc.preferences;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 import androidx.annotation.Nullable;
 
