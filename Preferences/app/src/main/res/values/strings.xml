@@ -2,9 +2,15 @@
     <string name="app_name">Preferences</string>
     <string name="key_vorname">vorname</string>
     <string name="key_nachname">nachname</string>
-    <string-array name="geschlechter">
+    <string name="key_geschlecht">geschlecht</string>
+    <string-array name="key_geschlechter">
         <item>männlich</item>
         <item>weiblich</item>
         <item>divers</item>
+    </string-array>
+    <string-array name="gesch_entries_values">
+        <item>m</item>
+        <item>w</item>
+        <item>d</item>
     </string-array>
 </resources>
