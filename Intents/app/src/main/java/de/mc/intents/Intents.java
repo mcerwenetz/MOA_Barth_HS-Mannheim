@@ -1,6 +1,7 @@
 package de.mc.intents;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,18 +18,49 @@ public class Intents extends AppCompatActivity {
     final static String EXTRA_KEY = Intents.class.getPackage().getName() + ".Greet";
 
     Button explizit;
+    Button tel;
+    Button maps;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intent);
-        explizit = findViewById(R.id.btnExplcit);
+        explizit = findViewById(R.id.btnExplicit);
+        tel = findViewById(R.id.btnTelHSMA);
+        maps = findViewById(R.id.btnLocHSMA);
         explizit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickExplicit(v);
             }
         });
+        tel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickImplicitTel(v);
+            }
+        });
+        maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickImplicitMaps(v);
+            }
+        });
+
+    }
+
+    private void onClickImplicitMaps(View v) {
+        Log.v(TAG, "Mapedimaps");
+        Uri uri = Uri.parse("geo:49.46436,8.48724");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    private void onClickImplicitTel(View v) {
+        Log.v(TAG, "Ringring");
+        Uri uri = Uri.parse("tel:017638547923");
+        Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+        startActivity(intent);
     }
 
     public void onClickExplicit(View view){

@@ -6,6 +6,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Expliziter Intent"
-        android:id="@+id/btnExplcit"/>
+        android:id="@+id/btnExplicit"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Implizter Intent mit Call"
+        android:id="@+id/btnTelHSMA"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Implizter Intent mit Map"
+        android:id="@+id/btnLocHSMA"/>
 
 </LinearLayout>
