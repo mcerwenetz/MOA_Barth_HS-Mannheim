@@ -20,6 +20,7 @@ public class Intents extends AppCompatActivity {
     Button explizit;
     Button tel;
     Button maps;
+    Button web;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class Intents extends AppCompatActivity {
         explizit = findViewById(R.id.btnExplicit);
         tel = findViewById(R.id.btnTelHSMA);
         maps = findViewById(R.id.btnLocHSMA);
+        web = findViewById(R.id.btnWeb);
         explizit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,12 +48,24 @@ public class Intents extends AppCompatActivity {
                 onClickImplicitMaps(v);
             }
         });
-
+        web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickImplicitWeb(v);
+            }
+        });
     }
 
     private void onClickImplicitMaps(View v) {
         Log.v(TAG, "Mapedimaps");
         Uri uri = Uri.parse("geo:49.46436,8.48724");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    private void onClickImplicitWeb(View v) {
+        Log.v(TAG, "WebWub");
+        Uri uri = Uri.parse("https://mariuscerwenetz.de");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }

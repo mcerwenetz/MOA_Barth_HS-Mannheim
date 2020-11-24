@@ -17,5 +17,10 @@
         android:layout_height="wrap_content"
         android:text="Implizter Intent mit Map"
         android:id="@+id/btnLocHSMA"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Implizter Intent mit Web"
+        android:id="@+id/btnWeb"/>
 
 </LinearLayout>
