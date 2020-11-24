@@ -11,6 +11,8 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 
 public class Intents extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class Intents extends AppCompatActivity {
     Button tel;
     Button maps;
     Button web;
+    Button manualImplicit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class Intents extends AppCompatActivity {
         tel = findViewById(R.id.btnTelHSMA);
         maps = findViewById(R.id.btnLocHSMA);
         web = findViewById(R.id.btnWeb);
+        manualImplicit = findViewById(R.id.btnImplicitManual);
         explizit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +58,29 @@ public class Intents extends AppCompatActivity {
                 onClickImplicitWeb(v);
             }
         });
+        manualImplicit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickImplicitManuak(v);
+            }
+        });
+    }
+
+    private void onClickImplicitManuak(View v) {
+        int[] zahlen = {17, 42};
+        int zahlIndex = zahlen.length-1;
+        String host = "de.mc.intent";
+        Log.v(TAG, "onClickManual");
+        String scheme="vorliebe";
+        zahlIndex = (zahlIndex+1) % zahlen.length;
+        String path = String.format(Locale.getDefault(), "zahl/%d",zahlen[zahlIndex]);
+        String url = String.format("%s://%s/%s", scheme, host,path);
+        Uri uri = Uri.parse(url);
+        String action = Intent.ACTION_VIEW;
+        Intent intent = new Intent(action);
+        intent.setData(uri);
+        Log.v(TAG, "Intent auf dem weg");
+        startActivity(intent);
     }
 
     private void onClickImplicitMaps(View v) {

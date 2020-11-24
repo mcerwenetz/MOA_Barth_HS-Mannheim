@@ -19,6 +19,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".Ziel"/>
+        <activity android:name=".ZielImplizit"
+            android:label="ZielImplizit"
+            android:exported="true"
+            >
+            <intent-filter android:name="android.intent.action.View">
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="vorliebe"
+                    android:host="de.mc.intent"
+                    android:pathPrefix="/zahl/"
+                    />
+            </intent-filter>
+        </activity>
 
     </application>
 
