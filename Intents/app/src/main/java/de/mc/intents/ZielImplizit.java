@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ZielImplizit extends AppCompatActivity {
-    private static final String TAG = "ZielImplicitManual";
+    private static final String TAG = "ZielImplicit";
     private TextView tv;
 
     @Override

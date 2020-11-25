@@ -23,7 +23,8 @@
             android:label="ZielImplizit"
             android:exported="true"
             >
-            <intent-filter android:name="android.intent.action.View">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data
                     android:scheme="vorliebe"

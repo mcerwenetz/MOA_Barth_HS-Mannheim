@@ -61,12 +61,12 @@ public class Intents extends AppCompatActivity {
         manualImplicit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickImplicitManuak(v);
+                onClickImplicitManual(v);
             }
         });
     }
 
-    private void onClickImplicitManuak(View v) {
+    private void onClickImplicitManual(View v) {
         int[] zahlen = {17, 42};
         int zahlIndex = zahlen.length-1;
         String host = "de.mc.intent";
@@ -75,7 +75,9 @@ public class Intents extends AppCompatActivity {
         zahlIndex = (zahlIndex+1) % zahlen.length;
         String path = String.format(Locale.getDefault(), "zahl/%d",zahlen[zahlIndex]);
         String url = String.format("%s://%s/%s", scheme, host,path);
+        Log.v(TAG, "url=|" + url + "|");
         Uri uri = Uri.parse(url);
+        Log.v(TAG, "uri=|" + uri + "|");
         String action = Intent.ACTION_VIEW;
         Intent intent = new Intent(action);
         intent.setData(uri);
