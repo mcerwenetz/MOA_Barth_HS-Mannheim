@@ -11,8 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Calendar;
-
 public class Nebenlaeufigkeit extends Activity {
 
     private static final String TAG = "Nebenlaeufigkeit";
@@ -56,7 +54,7 @@ public class Nebenlaeufigkeit extends Activity {
     }
 
     private void update() {
-//        tvTime.setText((Integer.parseInt((String) tvTime.getText()) + 1));
+        tvTime.setText("" + System.currentTimeMillis()) ;
     }
 
     private void compute() {
