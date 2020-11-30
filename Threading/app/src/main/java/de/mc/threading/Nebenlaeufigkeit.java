@@ -2,6 +2,7 @@ package de.mc.threading;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +18,11 @@ public class Nebenlaeufigkeit extends Activity {
     Button compMain;
     Button compWrong;
     Button compRunOnUiThread;
+    Button compHandler;
     TextView tvTime;
     SeekBar sbar;
     Integer sleep = 0;
+    private Handler handler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class Nebenlaeufigkeit extends Activity {
         compMain = findViewById(R.id.btnMainThread);
         compWrong = findViewById(R.id.btnCrash);
         compRunOnUiThread = findViewById(R.id.btnRunOnUiThread);
+        compHandler = findViewById(R.id.btnRunOnHandler);
         tvTime = findViewById(R.id.tvTime);
         sbar = findViewById(R.id.sbar);
         compMain.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +63,18 @@ public class Nebenlaeufigkeit extends Activity {
                 }.start();
             }
         });
+        compHandler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        compute();
+                        handler.post(() -> update());
+                    }
+                }.start();
+            }
+        });
         sbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -77,6 +93,7 @@ public class Nebenlaeufigkeit extends Activity {
 
             }
         });
+        handler = new Handler();
     }
 
     private void update() {

@@ -35,6 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="run on ui thread"/>
+    <Button
+        android:id="@+id/btnRunOnHandler"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Run on Handler"/>
 
 
 </LinearLayout>
