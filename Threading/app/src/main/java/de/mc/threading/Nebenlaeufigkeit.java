@@ -3,6 +3,7 @@ package de.mc.threading;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,19 +20,24 @@ public class Nebenlaeufigkeit extends Activity {
     Button compWrong;
     Button compRunOnUiThread;
     Button compHandler;
+    Button compLooper;
     TextView tvTime;
     SeekBar sbar;
     Integer sleep = 0;
     private Handler handler;
+    private LooperThread looperThread;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nl);
+        looperThread = new LooperThread();
+        looperThread.start();
         compMain = findViewById(R.id.btnMainThread);
         compWrong = findViewById(R.id.btnCrash);
         compRunOnUiThread = findViewById(R.id.btnRunOnUiThread);
         compHandler = findViewById(R.id.btnRunOnHandler);
+        compLooper = findViewById(R.id.btnRunOnLooperThread);
         tvTime = findViewById(R.id.tvTime);
         sbar = findViewById(R.id.sbar);
         compMain.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +79,15 @@ public class Nebenlaeufigkeit extends Activity {
                         handler.post(() -> update());
                     }
                 }.start();
+            }
+        });
+        compLooper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                looperThread.mHandler.post(() -> {
+                    compute();
+                    looperThread.mHandler.post(() -> update());
+                });
             }
         });
         sbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
