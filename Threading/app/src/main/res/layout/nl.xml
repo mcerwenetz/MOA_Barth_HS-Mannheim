@@ -25,6 +25,16 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Compute im mainthread"/>
+    <Button
+        android:id="@+id/btnCrash"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Crash"/>
+    <Button
+        android:id="@+id/btnRunOnUiThread"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="run on ui thread"/>
 
 
 </LinearLayout>

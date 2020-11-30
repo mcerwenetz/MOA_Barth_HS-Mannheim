@@ -15,6 +15,8 @@ public class Nebenlaeufigkeit extends Activity {
 
     private static final String TAG = "Nebenlaeufigkeit";
     Button compMain;
+    Button compWrong;
+    Button compRunOnUiThread;
     TextView tvTime;
     SeekBar sbar;
     Integer sleep = 0;
@@ -24,6 +26,8 @@ public class Nebenlaeufigkeit extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nl);
         compMain = findViewById(R.id.btnMainThread);
+        compWrong = findViewById(R.id.btnCrash);
+        compRunOnUiThread = findViewById(R.id.btnRunOnUiThread);
         tvTime = findViewById(R.id.tvTime);
         sbar = findViewById(R.id.sbar);
         compMain.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +35,28 @@ public class Nebenlaeufigkeit extends Activity {
             public void onClick(View v) {
                 compute();
                 update();
+            }
+        });
+        compWrong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(() -> {
+                    compute();
+                    update();
+                }
+                ).start();
+            }
+        });
+        compRunOnUiThread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        compute();
+                        Nebenlaeufigkeit.this.runOnUiThread(() -> update());
+                    }
+                }.start();
             }
         });
         sbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
