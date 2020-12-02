@@ -22,5 +22,11 @@
         android:text="Enter"
         android:id="@+id/btnsubmit"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnreset"
+        android:text="reset"
+        />
 
 </LinearLayout>
