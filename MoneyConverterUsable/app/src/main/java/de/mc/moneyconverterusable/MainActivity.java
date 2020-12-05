@@ -1,4 +1,4 @@
-package de.mc.moneyconverter;
+package de.mc.moneyconverterusable;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import org.w3c.dom.Text;
+
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 
@@ -22,8 +24,10 @@ public class MainActivity extends Activity{
     private final String TAG = "MoneyConverter";
 
 
-    private EditText etAmount;
-    private TextView tvResult;
+    private TextView tvDest;
+    private TextView tvSource;
+    private EditText etSource;
+    private EditText etDest;
     private Spinner quellwaehrungsspinner;
     private Spinner zielwaehrungsspinner;
     private String quellwaehrung;
@@ -41,18 +45,71 @@ public class MainActivity extends Activity{
         //Todo: Saved instance nutzen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moneyconverter);
-        etAmount = findViewById(R.id.etAmountSource);
         //Todo: Zielwährungsfeld soll et werden. Die
-        tvResult = findViewById(R.id.tvResult);
+        etSource = findViewById(R.id.etSource);
+        etDest = findViewById(R.id.etDest);
+
+        resetAllEts();
 
         quellwaehrungsspinner = findViewById(R.id.spinnerquellwaehrung);
         zielwaehrungsspinner = findViewById(R.id.spinnerqzielwaehrung);
 
+        etSource.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.v(TAG, "s is " + s.toString());
+                if(s.toString().matches("")) {
+                    resetAllEts();
+                }else{
+
+                    amount = new BigDecimal(s.toString());
+                    Log.v(TAG, "Amount is " + amount);
+                    calculation();
+                }
+            }
+        });
+        etDest.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.v(TAG, "s is " + s.toString());
+                if(s.toString().matches("")) {
+                    resetAllEts();
+                }else{
+
+                    amount = new BigDecimal(s.toString());
+                    Log.v(TAG, "Amount is " + amount);
+                    calculation();
+                }
+            }
+        });
+
         calc = new Calculation();
 
-        tvResult.setText("0");
         ArrayAdapter<CharSequence> waehrungsnamenadapter = ArrayAdapter.createFromResource(this, R.array.wechselkursNamen, android.R.layout.simple_spinner_item);
         waehrungsnamenadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        quellwaehrungsspinner.setAdapter(waehrungsnamenadapter);
+        zielwaehrungsspinner.setAdapter(waehrungsnamenadapter);
 
         AdapterView.OnItemSelectedListener quellOisl = new AdapterView.OnItemSelectedListener() {
             @Override
@@ -67,8 +124,6 @@ public class MainActivity extends Activity{
 
             }
         };
-
-
         AdapterView.OnItemSelectedListener zielOisl = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -85,38 +140,15 @@ public class MainActivity extends Activity{
             }
         };
 
-
-
-        quellwaehrungsspinner.setAdapter(waehrungsnamenadapter);
-        zielwaehrungsspinner.setAdapter(waehrungsnamenadapter);
-
         quellwaehrungsspinner.setOnItemSelectedListener(quellOisl);
         zielwaehrungsspinner.setOnItemSelectedListener(zielOisl);
 
-        etAmount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                Log.v(TAG, "s is " + s.toString());
-                if(s.toString().matches("")) {
-                    tvResult.setText("0");
-                }else{
 
-                    amount = new BigDecimal(s.toString());
-                    Log.v(TAG, "Amount is " + amount);
-                    calculation();
-                }
-            }
-        });
+
 
     }
 
@@ -128,8 +160,12 @@ public class MainActivity extends Activity{
             for (int i = 0; i < wechselkurse.length; i++){
                 wechselkursmap.put(wechselkursnamen[i], wechselkurse[i]);
             }
-            tvResult.setText(calc.getResult(quellwaehrung,zielwaehrung,amount, wechselkursmap).toString());
+//            tvResult.setText(calc.getResult(quellwaehrung,zielwaehrung,amount, wechselkursmap).toString());
         }
     }
 
+    private void resetAllEts(){
+        etSource.setText("0", TextView.BufferType.EDITABLE);
+        etDest.setText("0", TextView.BufferType.EDITABLE);
+    }
 }
