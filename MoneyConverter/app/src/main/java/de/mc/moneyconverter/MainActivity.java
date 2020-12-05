@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.math.BigDecimal;
@@ -32,9 +33,25 @@ public class MainActivity extends Activity{
     private BigDecimal result;
     private Calculation calc;
 
-    public MainActivity() {
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.v("Killing Activity", "saving stuff");
+        super.onSaveInstanceState(outState);
+        outState.putString("etAmount", etAmount.getText().toString());
+        outState.putString("quellwaehrung", quellwaehrung.toString());
+        outState.putString("zielwaehrung", zielwaehrung.toString());
     }
 
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        Log.v("Restoring", "old instance was killed");
+        super.onRestoreInstanceState(savedInstanceState);
+        quellwaehrung=savedInstanceState.getString("quellwaehrung");
+        zielwaehrung=savedInstanceState.getString("zielwaehrung");
+        etAmount.setText(savedInstanceState.getString("etAmount"));
+        calculation();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,8 +84,6 @@ public class MainActivity extends Activity{
 
             }
         };
-
-
         AdapterView.OnItemSelectedListener zielOisl = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -121,6 +136,7 @@ public class MainActivity extends Activity{
     }
 
     private void calculation() {
+        Log.v("Calc", "Calculation was called");
         if (quellwaehrung != null && zielwaehrung != null && amount != null){
             String[] wechselkursnamen = this.getResources().getStringArray(R.array.wechselkursNamen);
             String[] wechselkurse = this.getResources().getStringArray(R.array.wechselkurse);
