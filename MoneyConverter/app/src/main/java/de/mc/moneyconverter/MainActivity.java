@@ -154,7 +154,7 @@ public class MainActivity extends Activity{
 
     private void calculation() {
         String keyNachkommastellen = getString(R.string.key_nachkommastellen);
-        String nachkommastellen = sp.getString(keyNachkommastellen,"4");
+        String nachkommastellen = sp.getString(keyNachkommastellen,"2");
         Integer nachkommastellenI = Integer.valueOf(nachkommastellen);
         Log.v("Calc", "Nachkommastellen ist " +  nachkommastellenI);
         if (quellwaehrung != null && zielwaehrung != null && amount != null){

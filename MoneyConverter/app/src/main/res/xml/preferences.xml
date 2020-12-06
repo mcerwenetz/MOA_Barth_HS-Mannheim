@@ -3,6 +3,6 @@
         <EditTextPreference
             android:key="@string/key_nachkommastellen"
             android:title="Nachkommastellen"
-            android:defaultValue="10"
+            android:defaultValue="2"
             />
 </PreferenceScreen>
