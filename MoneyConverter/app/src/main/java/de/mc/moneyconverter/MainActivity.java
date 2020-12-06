@@ -1,6 +1,7 @@
 package de.mc.moneyconverter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ public class MainActivity extends Activity{
     private BigDecimal amount;
     private BigDecimal result;
     private Calculation calc;
+    private Button btnSettings;
 
 
     @Override
@@ -61,6 +64,7 @@ public class MainActivity extends Activity{
         etAmount = findViewById(R.id.etAmountSource);
         //Todo: Zielwährungsfeld soll et werden. Die
         tvResult = findViewById(R.id.tvResult);
+        btnSettings=findViewById(R.id.btnSettings);
 
         quellwaehrungsspinner = findViewById(R.id.spinnerquellwaehrung);
         zielwaehrungsspinner = findViewById(R.id.spinnerqzielwaehrung);
@@ -130,6 +134,14 @@ public class MainActivity extends Activity{
                     Log.v(TAG, "Amount is " + amount);
                     calculation();
                 }
+            }
+        });
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, PreferencesActivity.class);
+                startActivity(i);
             }
         });
 
