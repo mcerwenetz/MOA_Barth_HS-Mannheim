@@ -2,7 +2,9 @@ package de.mc.moneyconverter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -35,6 +37,7 @@ public class MainActivity extends Activity{
     private BigDecimal result;
     private Calculation calc;
     private Button btnSettings;
+    private SharedPreferences sp;
 
 
     @Override
@@ -65,6 +68,8 @@ public class MainActivity extends Activity{
         //Todo: Zielwährungsfeld soll et werden. Die
         tvResult = findViewById(R.id.tvResult);
         btnSettings=findViewById(R.id.btnSettings);
+
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
 
         quellwaehrungsspinner = findViewById(R.id.spinnerquellwaehrung);
         zielwaehrungsspinner = findViewById(R.id.spinnerqzielwaehrung);
@@ -148,7 +153,10 @@ public class MainActivity extends Activity{
     }
 
     private void calculation() {
-        Log.v("Calc", "Calculation was called");
+        String keyNachkommastellen = getString(R.string.key_nachkommastellen);
+        String nachkommastellen = sp.getString(keyNachkommastellen,"4");
+        Integer nachkommastellenI = Integer.valueOf(nachkommastellen);
+        Log.v("Calc", "Nachkommastellen ist " +  nachkommastellenI);
         if (quellwaehrung != null && zielwaehrung != null && amount != null){
             String[] wechselkursnamen = this.getResources().getStringArray(R.array.wechselkursNamen);
             String[] wechselkurse = this.getResources().getStringArray(R.array.wechselkurse);
@@ -156,7 +164,7 @@ public class MainActivity extends Activity{
             for (int i = 0; i < wechselkurse.length; i++){
                 wechselkursmap.put(wechselkursnamen[i], wechselkurse[i]);
             }
-            tvResult.setText(calc.getResult(quellwaehrung,zielwaehrung,amount, wechselkursmap).toString());
+            tvResult.setText(calc.getResult(quellwaehrung,zielwaehrung,amount, wechselkursmap, nachkommastellenI).toString());
         }
     }
 

@@ -6,7 +6,7 @@
             android:title="Nachkommastellen"
             android:entries="@array/nachkommastellen_entires"
             android:entryValues="@array/nachkommastellen_values"
-            android:defaultValue="0"
+            android:defaultValue="2"
             />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="nachkommastellen_entires">
+    <integer-array name="nachkommastellen_entires">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -8,8 +8,8 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
-    </string-array>
-    <string-array name="nachkommastellen_values">
+    </integer-array>
+    <integer-array name="nachkommastellen_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -17,5 +17,5 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
-    </string-array>
+    </integer-array>
 </resources>
