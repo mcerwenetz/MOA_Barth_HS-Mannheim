@@ -63,18 +63,17 @@ public class MainActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moneyconverter);
-//        Verschiedene Items binden
+//      1. Verschiedene Items binden
         etAmount = findViewById(R.id.etAmountSource);
         tvResult = findViewById(R.id.tvResult);
         btnSettings = findViewById(R.id.btnSettings);
         quellwaehrungsspinner = findViewById(R.id.spinnerquellwaehrung);
         zielwaehrungsspinner = findViewById(R.id.spinnerqzielwaehrung);
-//Hol dir die Shared Prefs. Brauchste später für die calc.
+//      Hol dir die Shared Prefs. Brauchste später für die calc.
         sp = PreferenceManager.getDefaultSharedPreferences(this);
-//        Calc Objekt anlegen für die Calc
+//      2. Neue Objekte bauen
+//      Calc Objekt anlegen für die Calc
         calc = new Calculation();
-//      TV initial 0 setzen
-        tvResult.setText("0");
 //        Baue einen Arrayadapter für die währungsnamen und gebe Sie den
         ArrayAdapter<CharSequence> waehrungsnamenadapter = ArrayAdapter.createFromResource(this, R.array.wechselkursNamen, android.R.layout.simple_spinner_item);
         waehrungsnamenadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -110,13 +109,15 @@ public class MainActivity extends Activity {
         zielwaehrungsspinner.setAdapter(waehrungsnamenadapter);
         quellwaehrungsspinner.setOnItemSelectedListener(quellOisl);
         zielwaehrungsspinner.setOnItemSelectedListener(zielOisl);
-//        Initiale festlegung Quellwährung und Zielwährung aus den Prefs
-        String ausgewählterQuellEintragSP = sp.getString(getString(R.string.key_initiale_quellwaehrung), "EUR");
-        String ausgewählterZielEintragSP = sp.getString(getString(R.string.key_initiale_zielwaehrung), "EUR");
-        int poistionQuellSelectionPreferences = waehrungsnamenadapter.getPosition(ausgewählterQuellEintragSP);
-        int poistionZielSelectionPreferences = waehrungsnamenadapter.getPosition(ausgewählterZielEintragSP);
-        quellwaehrungsspinner.setSelection(poistionQuellSelectionPreferences);
-        zielwaehrungsspinner.setSelection(poistionZielSelectionPreferences);
+//      Füge einen ocl für den Settingsbutton hinzu.
+//      Drückt man drauf starten die Settings
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, PreferencesActivity.class);
+                startActivity(i);
+            }
+        });
 //      Füge einen TextWatcher auf etAmount hinzu. Jedes mal wenn sich der Text ändert wird
 //      calc aufgerufen
         etAmount.addTextChangedListener(new TextWatcher() {
@@ -143,17 +144,18 @@ public class MainActivity extends Activity {
                 }
             }
         });
-//        Schreibe initiale Zahl in etAmount
+//      3. Initalisierung
+//      TV initial 0 setzen
+        tvResult.setText("0");
+//      Initiale festlegung Quellwährung und Zielwährung aus den Prefs
+        String ausgewaehlterQuellEintragSP = sp.getString(getString(R.string.key_initiale_quellwaehrung), "EUR");
+        String ausgewaehlterZielEintragSP = sp.getString(getString(R.string.key_initiale_zielwaehrung), "EUR");
+        int poistionQuellSelectionPreferences = waehrungsnamenadapter.getPosition(ausgewaehlterQuellEintragSP);
+        int poistionZielSelectionPreferences = waehrungsnamenadapter.getPosition(ausgewaehlterZielEintragSP);
+        quellwaehrungsspinner.setSelection(poistionQuellSelectionPreferences);
+        zielwaehrungsspinner.setSelection(poistionZielSelectionPreferences);
+//      Schreibe initiale Zahl in etAmount
         etAmount.setText(sp.getString(getString(R.string.key_initialer_umrechnungswert),"0"));
-//        Füge einen ocl für den Settingsbutton hinzu.
-//        Drückt man drauf starten die Settings
-        btnSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, PreferencesActivity.class);
-                startActivity(i);
-            }
-        });
 
     }
 
