@@ -4,11 +4,19 @@
         android:defaultValue="2"
         android:key="@string/key_nachkommastellen"
         android:title="Nachkommastellen" />
-    <ListPreference
-        android:entries="@array/wechselkursNamen"
-        android:key="@string/key_initiale_quellwaehrung"
-        android:title="@string/key_initiale_quellwaehrung"
-        android:entryValues="@array/wechselkursNamen"
-        android:defaultValue="EUR"
-        />
+    <PreferenceCategory android:title="Initalwerte">
+        <ListPreference
+            android:defaultValue="EUR"
+            android:entries="@array/wechselkursNamen"
+            android:entryValues="@array/wechselkursNamen"
+            android:key="@string/key_initiale_quellwaehrung"
+            android:title="@string/key_initiale_quellwaehrung" />
+        <ListPreference
+            android:defaultValue="EUR"
+            android:entries="@array/wechselkursNamen"
+            android:entryValues="@array/wechselkursNamen"
+            android:key="@string/key_initiale_zielwaehrung"
+            android:title="@string/key_initiale_zielwaehrung" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

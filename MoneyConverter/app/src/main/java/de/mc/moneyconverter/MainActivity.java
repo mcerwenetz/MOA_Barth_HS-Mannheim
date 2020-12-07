@@ -111,9 +111,12 @@ public class MainActivity extends Activity {
         quellwaehrungsspinner.setOnItemSelectedListener(quellOisl);
         zielwaehrungsspinner.setOnItemSelectedListener(zielOisl);
 //        Initiale festlegung Quellwährung und Zielwährung aus den Prefs
-        String ausgewählterEintragSP = sp.getString(getString(R.string.key_initiale_quellwaehrung), "EUR");
-        int poistionEintragPreferences = waehrungsnamenadapter.getPosition(ausgewählterEintragSP);
-        quellwaehrungsspinner.setSelection(poistionEintragPreferences);
+        String ausgewählterQuellEintragSP = sp.getString(getString(R.string.key_initiale_quellwaehrung), "EUR");
+        String ausgewählterZielEintragSP = sp.getString(getString(R.string.key_initiale_zielwaehrung), "EUR");
+        int poistionQuellSelectionPreferences = waehrungsnamenadapter.getPosition(ausgewählterQuellEintragSP);
+        int poistionZielSelectionPreferences = waehrungsnamenadapter.getPosition(ausgewählterZielEintragSP);
+        quellwaehrungsspinner.setSelection(poistionQuellSelectionPreferences);
+        zielwaehrungsspinner.setSelection(poistionZielSelectionPreferences);
 //      Füge einen TextWatcher auf etAmount hinzu. Jedes mal wenn sich der Text ändert wird
 //      calc aufgerufen
         etAmount.addTextChangedListener(new TextWatcher() {
