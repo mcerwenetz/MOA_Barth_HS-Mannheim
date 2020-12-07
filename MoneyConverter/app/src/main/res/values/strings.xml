@@ -3,6 +3,7 @@
     <string name="spquellwaehrung">Quellwährung auswählen</string>
     <string name="spqzielwaehrung">Zielwährung eingeben</string>
     <string name="key_nachkommastellen">Nachkommastellen</string>
+    <string name="key_initiale_quellwaehrung">Initiale Quellwährung</string>
     <string-array name="wechselkursNamen">
         <item>EUR</item>
         <item>USD</item>

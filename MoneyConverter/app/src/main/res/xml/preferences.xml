@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <EditTextPreference
-            android:key="@string/key_nachkommastellen"
-            android:title="Nachkommastellen"
-            android:defaultValue="2"
-            />
+    <EditTextPreference
+        android:defaultValue="2"
+        android:key="@string/key_nachkommastellen"
+        android:title="Nachkommastellen" />
+    <ListPreference
+        android:entries="@array/wechselkursNamen"
+        android:key="@string/key_initiale_quellwaehrung"
+        android:title="@string/key_initiale_quellwaehrung"
+        android:entryValues="@array/wechselkursNamen"
+        android:defaultValue="EUR"
+        />
 </PreferenceScreen>
