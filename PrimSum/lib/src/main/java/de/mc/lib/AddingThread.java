@@ -22,8 +22,9 @@ public class AddingThread extends  Thread {
 
     @Override
     public void run() {
+        Long i = new Long(0);
         while(sum < 10_000_000){
-            Long i = clq.poll();
+            i = clq.poll();
             if (i != null){
                 anzahlKonsumierterPrimzahlen++;
                 sum+=i;
@@ -32,5 +33,6 @@ public class AddingThread extends  Thread {
             }
         }
         keepGenerating.set(false);
+        System.out.println("Letzte konsumierte Primzahl: " + i);
     }
 }
