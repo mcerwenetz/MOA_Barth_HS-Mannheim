@@ -3,18 +3,19 @@ package de.mc.lib;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GeneratorThread extends Thread{
 
     AtomicBoolean keepGenerating;
-    ConcurrentLinkedQueue<Long> clq;
+    LinkedBlockingQueue<Long> lbq;
     Long anzahlGenerierterPrimzahlen = new Long(0);
 
 
-    public GeneratorThread(AtomicBoolean keepGenerating, ConcurrentLinkedQueue<Long> clq){
+    public GeneratorThread(AtomicBoolean keepGenerating, LinkedBlockingQueue<Long> lbq){
         this.keepGenerating = keepGenerating;
-        this.clq=clq;
+        this.lbq=lbq;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class GeneratorThread extends Thread{
                 }
             }
             if(divs.isEmpty() == true){
-                clq.add(start);
+                lbq.add(start);
             }
             start++;
         }
