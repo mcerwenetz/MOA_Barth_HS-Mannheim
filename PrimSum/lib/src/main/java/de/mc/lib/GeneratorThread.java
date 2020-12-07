@@ -20,10 +20,10 @@ public class GeneratorThread extends Thread{
 
     @Override
     public void run() {
+        Long start = new Long(3);
         while (keepGenerating.get()){
-            Long start = new Long(3);
             List<Long> divs = new ArrayList<>();
-            for(Long i = new Long(2); i < start; i+=1){
+            for(Long i = new Long(2); i < start; i++){
                 if(start%i==0){
                     divs.add(i);
                 }
