@@ -5,6 +5,7 @@
     <string name="key_nachkommastellen">Nachkommastellen</string>
     <string name="key_initiale_quellwaehrung">Initiale Quellwährung</string>
     <string name="key_initiale_zielwaehrung">Initiale Zielwährung</string>
+    <string name="key_initialer_umrechnungswert">Initale Zahl</string>
     <string-array name="wechselkursNamen">
         <item>EUR</item>
         <item>USD</item>

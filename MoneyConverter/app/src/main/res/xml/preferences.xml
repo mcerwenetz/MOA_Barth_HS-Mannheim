@@ -4,6 +4,11 @@
         android:defaultValue="2"
         android:key="@string/key_nachkommastellen"
         android:title="Nachkommastellen" />
+    <EditTextPreference
+        android:key="@string/key_initialer_umrechnungswert"
+        android:title="@string/key_initialer_umrechnungswert"
+        android:defaultValue="0"
+        />
     <PreferenceCategory android:title="Initalwerte">
         <ListPreference
             android:defaultValue="EUR"

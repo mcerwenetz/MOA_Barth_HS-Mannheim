@@ -143,6 +143,8 @@ public class MainActivity extends Activity {
                 }
             }
         });
+//        Schreibe initiale Zahl in etAmount
+        etAmount.setText(sp.getString(getString(R.string.key_initialer_umrechnungswert),"0"));
 //        Füge einen ocl für den Settingsbutton hinzu.
 //        Drückt man drauf starten die Settings
         btnSettings.setOnClickListener(new View.OnClickListener() {
