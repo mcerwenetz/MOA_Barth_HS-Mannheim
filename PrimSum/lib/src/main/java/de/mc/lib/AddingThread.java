@@ -3,11 +3,15 @@ package de.mc.lib;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+
 public class AddingThread extends  Thread {
 
     AtomicBoolean keepGenerating;
     ConcurrentLinkedQueue<Long> clq;
     Long sum;
+    Long anzahlEmpty=new Long(0);
+    Long anzahlKonsumierterPrimzahlen = new Long(0);
+
 
 
     public AddingThread(AtomicBoolean keepGenerating, ConcurrentLinkedQueue<Long> clq){
@@ -18,10 +22,13 @@ public class AddingThread extends  Thread {
 
     @Override
     public void run() {
-        while(sum < 100_000_000){
+        while(sum < 10_000_000){
             Long i = clq.poll();
             if (i != null){
+                anzahlKonsumierterPrimzahlen++;
                 sum+=i;
+            }else{
+                anzahlEmpty++;
             }
         }
         keepGenerating.set(false);
