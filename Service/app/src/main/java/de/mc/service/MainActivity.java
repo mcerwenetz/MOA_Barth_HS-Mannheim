@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Main";
     private Button btnAdd;
+    private Button btnBind;
+    private Button btnUnBind;
     private TextView result;
     private EditText etNumber1;
     private EditText etNumber2;
@@ -50,13 +52,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindUi();
-        bindLocal();
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                useLocal();
-            }
-        });
     }
 
     private void bindUi() {
@@ -64,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
         result = findViewById(R.id.tvResult);
         etNumber1 = findViewById(R.id.etnumber1);
         etNumber2 = findViewById(R.id.etnumber2);
+        btnBind = findViewById(R.id.btnBind);
+        btnUnBind = findViewById(R.id.btnunbind);
+        btnAdd.setOnClickListener(v -> useLocal());
+        btnBind.setOnClickListener(v -> bindLocal());
+        btnUnBind.setOnClickListener(v -> unBindLocal());
     }
 
     private Integer getNumber1(){
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG, "local service not bound yet");
             return;
         }
+        if (etNumber1.getText().toString().equals("") || etNumber2.getText().toString().equals("")){
+            return;
+        }
         Integer result = localService.doAdd(getNumber1(), getNumber2());
         setResult(result);
     }
@@ -92,5 +95,13 @@ public class MainActivity extends AppCompatActivity {
         localServiceBound = bindService(intent, localServiceConnection, Context.BIND_AUTO_CREATE);
 //          Asynchron localServiceBound heißt nicht dass Service schon gebunden ist.
 //          Wie Gesagt, verwirrend, weil eigentlich: localServiceRequested.
+    }
+
+    public void unBindLocal(){
+        if(localServiceBound){
+            localServiceBound=false;
+            localService = null;
+            unbindService(localServiceConnection);
+        }
     }
 }
