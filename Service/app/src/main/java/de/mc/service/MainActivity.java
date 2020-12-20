@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         etNumber2 = findViewById(R.id.etnumber2);
         btnBind = findViewById(R.id.btnBind);
         btnUnBind = findViewById(R.id.btnunbind);
-        btnAdd.setOnClickListener(v -> useLocal());
+        btnAdd.setOnClickListener(v -> startParamsLocal());
         btnBind.setOnClickListener(v -> bindLocal());
         btnUnBind.setOnClickListener(v -> unBindLocal());
     }
@@ -107,8 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
 //    Wird nur benutzt wenn man nen Dienst hat der kein return hat
     public void startParamsLocal(){
+        Log.v(TAG, "starte über paramslocal");
         Intent intent = new Intent(this, LocalService.class);
-        intent.setAction(LocalService.CMD_COMPUTE);
+//        intent.setAction(LocalService.CMD_COMPUTE);
         intent.setAction(LocalService.CMD_SAY);
         intent.putExtra("number1", getNumber1());
         intent.putExtra("number2", getNumber2());
