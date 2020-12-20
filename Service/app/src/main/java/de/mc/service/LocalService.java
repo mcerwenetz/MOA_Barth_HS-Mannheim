@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 public class LocalService extends Service {
 
-    private IBinder binder = new LocalBinder();
+    private final IBinder binder = new LocalBinder();
     public class LocalBinder extends Binder{
         public LocalService getService(){
             return LocalService.this;

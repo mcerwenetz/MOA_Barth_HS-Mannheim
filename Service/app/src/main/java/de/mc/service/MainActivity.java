@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 //    Frage ob Bindung schonmal angefragt wurde, nicht ob gebunden. Verwirrend.
     private boolean localServiceBound = false;
     private LocalService localService;
-    private ServiceConnection localServiceConnection = new ServiceConnection() {
+    private final ServiceConnection localServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 //            Übelst verkopft: service ist kein Service sondern n IBinder.
