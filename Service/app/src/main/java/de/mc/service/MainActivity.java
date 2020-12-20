@@ -104,4 +104,14 @@ public class MainActivity extends AppCompatActivity {
             unbindService(localServiceConnection);
         }
     }
+
+//    Wird nur benutzt wenn man nen Dienst hat der kein return hat
+    public void startParamsLocal(){
+        Intent intent = new Intent(this, LocalService.class);
+        intent.setAction(LocalService.CMD_COMPUTE);
+        intent.setAction(LocalService.CMD_SAY);
+        intent.putExtra("number1", getNumber1());
+        intent.putExtra("number2", getNumber2());
+        startService(intent);
+    }
 }
